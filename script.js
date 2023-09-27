@@ -13,7 +13,7 @@ const correctAnswers = {
     3: "MANCHESTER UNITED",
     4: "SHANE LONG",
     5: "BRAZIL",
-    6: "THOMAS SWARTSCH",
+    6: "STEFAN SCHWARZ",
     7: 9,
     8: 1960,
     9: "HARRY KANE",
@@ -96,6 +96,17 @@ buttons[9].addEventListener("click", function(){
 });
 
 
-if(answersDone[1,2,3,4,5,6,7,8,9,10] == "Rätt") {
-    alert("Du fick alla rätt!");
+const correcting = function() {
+    for(let i = 1; i <= 10; i++) {
+        if(answersDone[i]!== "Rätt") {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+}
+
+if(correcting()) {
+    alert("ALLA RÄTT YIPPIE");
 }
