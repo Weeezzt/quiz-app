@@ -1,43 +1,23 @@
 
-const answer1 = document.getElementById("answer-1");
-const answer2 = document.getElementById("answer-2");
-const answer3 = document.getElementById("answer-3");
-const answer4 = document.getElementById("answer-4");
-const answer5 = document.getElementById("answer-5");
-const answer6 = document.getElementById("answer-6");
-const answer7 = document.getElementById("answer-7");
-const answer8 = document.getElementById("answer-8");
-const answer9 = document.getElementById("answer-9");
-const answer10 = document.getElementById("answer-10");
+const answerInputs = Array.from({length: 10}, (_, i) => document.getElementById(`answer-${i}`));
 
-const answerArray = [answer1, answer2, answer3, answer4, answer5, answer6, answer7, answer8, answer9, answer10];
+const questionTexts = Array.from({length: 10}, (_, i) => document.getElementById(`question-${i}`));
 
-const qText1 = document.getElementById("question-1")
-const qText2 = document.getElementById("question-2")
-const qText3 = document.getElementById("question-3")
-const qText4 = document.getElementById("question-4")
-const qText5 = document.getElementById("question-5")
-const qText6 = document.getElementById("question-6")
-const qText7 = document.getElementById("question-7")
-const qText8 = document.getElementById("question-8")
-const qText9 = document.getElementById("question-9")
-const qText10 = document.getElementById("question-10")
+const buttons = Array.from({length: 10}, (_, i) => document.getElementById(`button-${i}`));
 
-const qTextArray = [qText1, qText2, qText3, qText4, qText5, qText6, qText7, qText8, qText9, qText10];
-
-let needText = document.getElementById("needtext");
+const paragraphs = Array.from({length: 10}, (_, i) => document.getElementById(`p-${i}`));
 
 const correctAnswers = {
-    1: "SADIO MANE",
-    2: "MANCHESTER UNITED",
-    3: "SHANE LONG",
-    4: "BRAZIL",
-    5: "THOMAS SWARTSCH",
-    6: 9,
-    7: 1960,
-    8: "HARRY KANE AND GARY LINEKER",
-    9: "ALAN SHEARER",
-    10: "LIVERPOOL"
+    1: "LIVERPOOL",
+    2: "SADIO MANE",
+    3: "MANCHESTER UNITED",
+    4: "SHANE LONG",
+    5: "BRAZIL",
+    6: "THOMAS SWARTSCH",
+    7: 9,
+    8: 1960,
+    9: "HARRY KANE",
+    10: "ALAN SHEARER"
 }
 
 const answersDone = {
@@ -53,25 +33,69 @@ const answersDone = {
     10: ""
 }
 
-function answerQuestion() {
 
-    if(answer1.value === "") {
+function answerQuestion(questionNumber) {
+
+    let needText = paragraphs[questionNumber - 1];
+    const answerInput = answerInputs[questionNumber - 1];
+    const questionText = questionTexts[questionNumber - 1];
+    const correctAnswer = correctAnswers[questionNumber];
+    
+
+    if(answerInput.value === "") {
         needText.innerHTML = "Du måste fylla i nåt";
-    } else if(answer1.value.toUpperCase() == correctAnswers[1]){
-        console.log(answer1.value);
-        qText1.classList.remove("red");
-        qText1.classList.add("green");
-        needText.innerText = "";
-        answersDone[1] = "Rätt";
+        answersDone[questionnNumber] = "N/A"
+    } else if(answerInput.value.toUpperCase() == correctAnswer){
+        console.log(answerInput.value);
+        questionText.classList.remove("red");
+        questionText.classList.add("green");
+        needText.innerHTML = "Korrekt";
+        answersDone[questionNumber] = "Rätt";
         
     } else {
-        qText1.classList.add("red");
-        needText.innerText = "Fel svar"
-        answersDone[1] = "Fel";
+        questionText.classList.add("red");
+        needText.innerHTML = "Fel svar"
+        answersDone[questionNumber] = "Fel";
     }
-    answer1.value = "";
+    answerInput.value = "";
     console.log(answersDone);
 }
 
 
 
+
+buttons[0].addEventListener("click", function(){
+    answerQuestion(1);
+});
+buttons[1].addEventListener("click", function(){
+    answerQuestion(2);
+});
+buttons[2].addEventListener("click", function(){
+    answerQuestion(3);
+});
+buttons[3].addEventListener("click", function(){
+    answerQuestion(4);
+});
+buttons[4].addEventListener("click", function(){
+    answerQuestion(5);
+});
+buttons[5].addEventListener("click", function(){
+    answerQuestion(6);
+});
+buttons[6].addEventListener("click", function(){
+    answerQuestion(7);
+});
+buttons[7].addEventListener("click", function(){
+    answerQuestion(8);
+});
+buttons[8].addEventListener("click", function(){
+    answerQuestion(9);
+});
+buttons[9].addEventListener("click", function(){
+    answerQuestion(10);
+});
+
+
+if(answersDone[1,2,3,4,5,6,7,8,9,10] == "Rätt") {
+    alert("Du fick alla rätt!");
+}
