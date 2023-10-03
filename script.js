@@ -64,6 +64,8 @@ function answerQuestion(questionNumber) {
 
 
 
+
+
 buttons[0].addEventListener("click", function(){
     answerQuestion(1);
 });
