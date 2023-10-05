@@ -7,6 +7,7 @@ const buttons = Array.from({length: 10}, (_, i) => document.getElementById(`butt
 
 const paragraphs = Array.from({length: 10}, (_, i) => document.getElementById(`p-${i}`));
 
+//objekt med rätt svar.
 const correctAnswers = {
     1: "LIVERPOOL",
     2: "SADIO MANE",
@@ -20,6 +21,7 @@ const correctAnswers = {
     10: "ALAN SHEARER"
 }
 
+//objekt med svar 
 const answersDone = {
     1: "",
     2: "",
@@ -44,7 +46,7 @@ function answerQuestion(questionNumber) {
 
     if(answerInput.value === "") {
         needText.innerHTML = "Du måste fylla i nåt";
-        answersDone[questionnNumber] = "N/A"
+        answersDone[questionNumber] = "N/A"
     } else if(answerInput.value.toUpperCase() == correctAnswer){
         console.log(answerInput.value);
         questionText.classList.remove("red");
